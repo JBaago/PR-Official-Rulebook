@@ -33,7 +33,22 @@
   .cta-row{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
   .btn{display:inline-flex;gap:10px;align-items:center;background:#0f2433;border:1px solid rgba(255,255,255,.07);padding:10px 14px;border-radius:12px;color:#e7f6ff;box-shadow:var(--ring);font-weight:600;cursor:pointer}
   .btn.secondary{background:#151922;color:var(--ink)}
-  /* Single-column layout */
+/* Discord CTA */
+.discord-cta { margin-top: 12px; }
+.discord-btn{
+  display:inline-block;
+  background:#5865F2;
+  color:#fff;
+  padding:10px 16px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:600;
+  border:1px solid rgba(255,255,255,.07);
+  box-shadow:var(--ring);
+  transition:.2s ease;
+}
+.discord-btn:hover{ background:#4752C4; text-decoration:none; }
+	/* Single-column layout */
   main{display:grid;gap:16px;margin-top:20px}
   details.section{background:var(--panel);border:1px solid rgba(255,255,255,.06);border-radius:16px;box-shadow:var(--card);padding:0}
   details.section > summary{list-style:none;cursor:pointer;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;font-weight:600}
@@ -59,21 +74,34 @@
   .skip:focus{position:static;width:auto;height:auto;padding:8px 10px;background:#0f2433;border-radius:8px;color:#e7f6ff}
 </style>
 </head>
+
 <body>
   <a class="skip" href="#main">Skip to content</a>
+
   <div class="wrap">
     <header class="hero">
       <div class="ribbon" title="Proprietary Format">PR SERIES</div>
+
       <div class="brandline">
         <div class="prlogo" aria-hidden="true"></div>
+
         <div class="title">
           <h1>Progression Riders (PR) Series – Official Rulebook</h1>
           <div class="subtitle">Created by Jacob Baagø • Version 2.0</div>
+
+          <div class="discord-cta">
+            <a class="discord-btn" href="https://discord.gg/kdmDERpcnw" target="_blank" rel="noopener">
+              🚀 Join the Official PR Discord Server
+            </a>
+          </div>
         </div>
       </div>
+
       <div class="cta-row">
         <button class="btn" onclick="window.print()" title="Print or Save as PDF">
-          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6h1a3 3 0 0 1 3 3v5h-4v4H6v-4H2v-5a3 3 0 0 1 3-3h1zm2-4v4h8V5H8zm8 12H8v4h8v-4zM6 13a1 1 0 1 0 0 2h1v-2H6z"/></svg>
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 9V3h12v6h1a3 3 0 0 1 3 3v5h-4v4H6v-4H2v-5a3 3 0 0 1 3-3h1zm2-4v4h8V5H8zm8 12H8v4h8v-4zM6 13a1 1 0 1 0 0 2h1v-2H6z"/>
+          </svg>
           Print / Save PDF
         </button>
       </div>
@@ -92,30 +120,33 @@
           </div>
         </div>
       </details>
-      
-      <section id="latest-changes">
-  <h2>Latest Changes</h2>
-  <details open>
-    <summary><strong>Version 2.0 – 06 Jan 2026</strong></summary>
-    <ul>
-      <li>Introduced a Zwift Racing Score–based points multiplier system.</li>
-      <li>More accurate description of the Chase Multiplier System and the Stage Bonus Pot.</li>
-    </ul>
-  </details>
-    <summary><strong>Version 1.9 – 04 Dec 2025</strong></summary>
-    <ul>
-      <li>Revised Chase Pot with multipliers for C & B groups and stage specific points.</li>
-    </ul>
-  </details>
+      <details class="section" open>
+        <summary><h2>Latest Changes</h2><span class="twist">▶</span></summary>
+        <div class="sec-body">
+          <details open>
+            <summary><strong>Version 2.0 – 06 Jan 2026</strong></summary>
+            <ul>
+              <li>Introduced a Zwift Racing Score–based points multiplier system.</li>
+              <li>More accurate description of the Chase Multiplier System and the Stage Bonus Pot.</li>
+            </ul>
+          </details>
 
-  <details>
-    <summary><strong>Version 1.8 – 27 Nov 2025</strong></summary>
-    <ul>
-      <li>Updated Beacon WKG cap during Chase.</li>
-      <li>Updated time gap between group starts to 2 min, from 3 min.</li>
-    </ul>
-  </details>
-</section>
+          <details>
+            <summary><strong>Version 1.9 – 04 Dec 2025</strong></summary>
+            <ul>
+              <li>Revised Chase Pot with multipliers for C &amp; B groups and stage specific points.</li>
+            </ul>
+          </details>
+
+          <details>
+            <summary><strong>Version 1.8 – 27 Nov 2025</strong></summary>
+            <ul>
+              <li>Updated Beacon WKG cap during Chase.</li>
+              <li>Updated time gap between group starts to 2 min, from 3 min.</li>
+            </ul>
+          </details>
+        </div>
+      </details>
 
       <details class="section" id="sec-1" open>
         <summary><h2>1 — Structure &amp; Core Rules</h2><span class="twist">▶</span></summary>
