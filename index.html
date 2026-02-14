@@ -17,107 +17,253 @@
             radial-gradient(800px 400px at 120% 5%, rgba(155,89,182,.12), transparent 60%),
             linear-gradient(135deg, #0b2a3a 0%, #0b0e12 45%, #1b0f1e  }
 
-	*{box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    margin:0;
-    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-    color:var(--ink);
-    background:var(--grad) fixed;
-    line-height:1.55
-  }
-  a{color:var(--brand);text-decoration:none}
-  a:hover{text-decoration:underline}
-  .wrap{max-width:900px;margin:0 auto;padding:20px}
+}
 
-  header.hero{
-    position:relative;
-    border-radius:18px;
-    padding:32px 24px 28px;
-    background:var(--panel);
-    box-shadow:var(--card)
-  }
+*{box-sizing:border-box}
+html,body{height:100%}
 
-  .ribbon{
-    position:absolute;
-    top:12px;
-    right:-40px;
-    transform:rotate(30deg);
-    background:#0f2433;
-    color:#cfe9ff;
-    padding:6px 60px;
-    border:1px solid rgba(255,255,255,.08);
-    box-shadow:var(--ring);
-    font-weight:700;
-    letter-spacing:.08em
-  }
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  color:var(--ink);
+  background:var(--grad) fixed;
+  line-height:1.55;
+}
 
-  .brandline{
-    display:flex;
-    align-items:center;
-    gap:16px;
-    flex-wrap:wrap
-  }
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
 
-  /* ===== REPLACED LOGO BLOCK ===== */
-  .prlogo{
-    width:64px;
-    height:64px;
-    border-radius:14px;
-    overflow:hidden;
-    border:1px solid rgba(255,255,255,.08);
-    box-shadow:0 10px 24px rgba(0,0,0,.6);
-    background:#000;
-    flex-shrink:0;
-  }
+.wrap{
+  max-width:900px;
+  margin:0 auto;
+  padding:20px;
+}
 
-  .prlogo img{
-    width:140%;
-    height:140%;
-    object-fit:cover;
-    object-position:38% 55%;
-    transform:translate(-10%, -10%);
-    filter:contrast(1.15);
-  }
-  /* ===== END LOGO BLOCK ===== */
+header.hero{
+  position:relative;
+  border-radius:18px;
+  padding:32px 24px 28px;
+  background:var(--panel);
+  box-shadow:var(--card);
+}
 
-  .title h1{
-    margin:0;
-    font-size:clamp(24px,3.5vw,36px)
-  }
+.ribbon{
+  position:absolute;
+  top:12px;
+  right:-40px;
+  transform:rotate(30deg);
+  background:#0f2433;
+  color:#cfe9ff;
+  padding:6px 60px;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:var(--ring);
+  font-weight:700;
+  letter-spacing:.08em;
+}
 
-  .subtitle{
-    color:var(--muted);
-    margin-top:4px
-  }
+.brandline{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
 
-  .cta-row{
-    margin-top:18px;
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap
-  }
+/* IMAGE LOGO */
+.prlogo{
+  width:64px;
+  height:64px;
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 8px 24px rgba(0,0,0,.5);
+  background:#000;
+  flex-shrink:0;
+}
 
-  .btn{
-    display:inline-flex;
-    gap:10px;
-    align-items:center;
-    background:#0f2433;
-    border:1px solid rgba(255,255,255,.07);
-    padding:10px 14px;
-    border-radius:12px;
-    color:#e7f6ff;
-    box-shadow:var(--ring);
-    font-weight:600;
-    cursor:pointer
-  }
+.prlogo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
 
-  .btn.secondary{
-    background:#151922;
-    color:var(--ink)
-  }
+.title h1{
+  margin:0;
+  font-size:clamp(24px,3.5vw,36px);
+}
 
-  /* Discord CTA */
+.subtitle{
+  color:var(--muted);
+  margin-top:4px;
+}
+
+.cta-row{
+  margin-top:18px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-flex;
+  gap:10px;
+  align-items:center;
+  background:#0f2433;
+  border:1px solid rgba(255,255,255,.07);
+  padding:10px 14px;
+  border-radius:12px;
+  color:#e7f6ff;
+  box-shadow:var(--ring);
+  font-weight:600;
+  cursor:pointer;
+}
+
+.btn.secondary{
+  background:#151922;
+  color:var(--ink);
+}
+
+/* Single-column layout */
+main{
+  display:grid;
+  gap:16px;
+  margin-top:20px;
+}
+
+details.section{
+  background:var(--panel);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:16px;
+  box-shadow:var(--card);
+  padding:0;
+}
+
+details.section > summary{
+  list-style:none;
+  cursor:pointer;
+  padding:16px 18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-weight:600;
+}
+
+details.section > summary::-webkit-details-marker{
+  display:none;
+}
+
+details.section > summary:focus{
+  outline:none;
+  box-shadow:var(--ring);
+  border-radius:12px;
+}
+
+details.section[open] > summary .twist{
+  transform:rotate(90deg);
+}
+
+.twist{
+  transition:transform .2s ease;
+}
+
+.sec-body{
+  padding:0 18px 18px;
+}
+
+h2{
+  margin:0;
+  font-size:22px;
+}
+
+h3{
+  margin:16px 0 6px;
+  font-size:18px;
+}
+
+.muted{
+  color:var(--muted);
+}
+
+ul{
+  margin:8px 0 8px 22px;
+}
+
+.badge-row{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:6px;
+}
+
+.jersey{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 10px;
+  border-radius:12px;
+  background:#0f1320;
+  border:1px solid rgba(255,255,255,.06);
+}
+
+.dot{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+}
+
+.dot.red{background:var(--red)}
+.dot.green{background:var(--green)}
+.dot.yellow{background:var(--yellow)}
+
+.callout{
+  border-left:4px solid var(--brand);
+  padding:10px 12px;
+  margin:10px 0;
+  background:#0e1522;
+  border-radius:10px;
+}
+
+.imgbox{
+  background:#0f1320;
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:12px;
+  padding:10px;
+  overflow:auto;
+}
+
+.imgbox img{
+  max-width:100%;
+  height:auto;
+  display:block;
+  margin:0 auto;
+}
+
+footer{
+  color:var(--muted);
+  padding:40px 0;
+  text-align:center;
+}
+
+/* Accessible skip links */
+.skip{
+  position:absolute;
+  left:-9999px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+
+.skip:focus{
+  position:static;
+  width:auto;
+  height:auto;
+  padding:8px 10px;
+  background:#0f2433;
+  border-radius:8px;
+  color:#e7f6ff;
+}
+
+/* Discord CTA */
 .discord-cta { margin-top: 12px; }
 .discord-btn{
   display:inline-block;
