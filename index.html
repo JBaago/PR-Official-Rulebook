@@ -15,25 +15,109 @@
     --card: 0 4px 24px rgba(0,0,0,.35);
     --grad: radial-gradient(1200px 600px at -10% -20%, rgba(18,163,255,.15), transparent 65%),
             radial-gradient(800px 400px at 120% 5%, rgba(155,89,182,.12), transparent 60%),
-            linear-gradient(135deg, #0b2a3a 0%, #0b0e12 45%, #1b0f1e 100%);
-  }
-  *{box-sizing:border-box}
+            linear-gradient(135deg, #0b2a3a 0%, #0b0e12 45%, #1b0f1e  }
+	}
+	*{box-sizing:border-box}
   html,body{height:100%}
-  body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--grad) fixed;line-height:1.55}
+  body{
+    margin:0;
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--grad) fixed;
+    line-height:1.55
+  }
   a{color:var(--brand);text-decoration:none}
   a:hover{text-decoration:underline}
   .wrap{max-width:900px;margin:0 auto;padding:20px}
-  header.hero{position:relative;border-radius:18px;padding:32px 24px 28px;background:var(--panel);box-shadow:var(--card)}
-  .ribbon{position:absolute;top:12px;right:-40px;transform:rotate(30deg);background:#0f2433;color:#cfe9ff;padding:6px 60px;border:1px solid rgba(255,255,255,.08);box-shadow:var(--ring);font-weight:700;letter-spacing:.08em}
-  .brandline{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-  .prlogo{--s:64px;width:var(--s);height:var(--s);border-radius:16px;background:conic-gradient(from 210deg, rgba(18,163,255,.2), rgba(155,89,182,.25), transparent 70%), radial-gradient(circle at 30% 30%, rgba(255,255,255,.25), transparent 50%), #0a1a2a;box-shadow: inset 0 0 24px rgba(255,255,255,.15), 0 8px 24px rgba(0,0,0,.5);display:grid;place-items:center;border:1px solid rgba(255,255,255,.08)}
-  .prlogo::before{content:"PR";font-weight:800;letter-spacing:.5px;font-size:22px;color:#e7f6ff;text-shadow:0 2px 8px rgba(18,163,255,.5)}
-  .title h1{margin:0;font-size:clamp(24px,3.5vw,36px)}
-  .subtitle{color:var(--muted);margin-top:4px}
-  .cta-row{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
-  .btn{display:inline-flex;gap:10px;align-items:center;background:#0f2433;border:1px solid rgba(255,255,255,.07);padding:10px 14px;border-radius:12px;color:#e7f6ff;box-shadow:var(--ring);font-weight:600;cursor:pointer}
-  .btn.secondary{background:#151922;color:var(--ink)}
-/* Discord CTA */
+
+  header.hero{
+    position:relative;
+    border-radius:18px;
+    padding:32px 24px 28px;
+    background:var(--panel);
+    box-shadow:var(--card)
+  }
+
+  .ribbon{
+    position:absolute;
+    top:12px;
+    right:-40px;
+    transform:rotate(30deg);
+    background:#0f2433;
+    color:#cfe9ff;
+    padding:6px 60px;
+    border:1px solid rgba(255,255,255,.08);
+    box-shadow:var(--ring);
+    font-weight:700;
+    letter-spacing:.08em
+  }
+
+  .brandline{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    flex-wrap:wrap
+  }
+
+  /* ===== REPLACED LOGO BLOCK ===== */
+  .prlogo{
+    width:64px;
+    height:64px;
+    border-radius:14px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.08);
+    box-shadow:0 10px 24px rgba(0,0,0,.6);
+    background:#000;
+    flex-shrink:0;
+  }
+
+  .prlogo img{
+    width:140%;
+    height:140%;
+    object-fit:cover;
+    object-position:38% 55%;
+    transform:translate(-10%, -10%);
+    filter:contrast(1.15);
+  }
+  /* ===== END LOGO BLOCK ===== */
+
+  .title h1{
+    margin:0;
+    font-size:clamp(24px,3.5vw,36px)
+  }
+
+  .subtitle{
+    color:var(--muted);
+    margin-top:4px
+  }
+
+  .cta-row{
+    margin-top:18px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap
+  }
+
+  .btn{
+    display:inline-flex;
+    gap:10px;
+    align-items:center;
+    background:#0f2433;
+    border:1px solid rgba(255,255,255,.07);
+    padding:10px 14px;
+    border-radius:12px;
+    color:#e7f6ff;
+    box-shadow:var(--ring);
+    font-weight:600;
+    cursor:pointer
+  }
+
+  .btn.secondary{
+    background:#151922;
+    color:var(--ink)
+  }
+
+  /* Discord CTA */
 .discord-cta { margin-top: 12px; }
 .discord-btn{
   display:inline-block;
