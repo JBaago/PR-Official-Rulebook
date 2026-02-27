@@ -163,9 +163,76 @@
   }
 
   /* Small “glow” on key headers */
-  .sec-body h3{
-    text-shadow:0 2px 16px rgba(18,163,255,.14);
-  }
+ .sec-body h3{
+  text-shadow:0 2px 16px rgba(18,163,255,.14)
+}
+
+/* ===== TOC (collapsible groups) ===== */
+
+#toc-groups{
+  display:grid;
+  gap:10px;
+  margin-top:12px;
+}
+
+details.toc-group{
+  border-radius:14px;
+  background:rgba(15,19,32,.55);
+  border:1px solid rgba(255,255,255,.08);
+  padding:0;
+  overflow:hidden;
+}
+
+details.toc-group > summary{
+  list-style:none;
+  cursor:pointer;
+  padding:10px 12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  font-weight:800;
+}
+
+details.toc-group > summary::-webkit-details-marker{
+  display:none;
+}
+
+details.toc-group[open] > summary .tw{
+  transform:rotate(90deg);
+}
+
+.tw{
+  transition:transform .2s ease;
+  opacity:.9;
+}
+
+.toc-links{
+  padding:0 12px 12px;
+}
+
+.toc-links a{
+  display:inline-block;
+  padding:7px 10px;
+  border-radius:999px;
+  background:rgba(15,19,32,.85);
+  border:1px solid rgba(255,255,255,.08);
+  margin:6px 6px 0 0;
+  text-decoration:none;
+  color:#e7f6ff;
+  font-weight:600;
+}
+
+.toc-links a:hover{
+  background:rgba(18,163,255,.15);
+  border-color:rgba(18,163,255,.35);
+  text-decoration:none;
+}
+
+.toc-links a.sub{
+  opacity:.85;
+  font-weight:600;
+}
 </style>
 </head>
 
@@ -214,10 +281,10 @@
             <button class="btn secondary" id="collapse-all" type="button" title="Collapse all sections">➖ Collapse all</button>
           </div>
 
-          <div class="callout info" style="margin-top:12px">
-            <div class="label">🧭 Navigation</div>
-            <div id="toc-items"><!-- Auto-generated links appear here --></div>
-          </div>
+      <div class="callout info" style="margin-top:12px">
+        <div class="label">🧭 Navigation</div>
+        <div id="toc-groups"><!-- Collapsible TOC groups appear here --></div>
+      </div>
 
           <p class="muted" style="margin:10px 0 0">
             Tip: Click a link to jump directly to a section.
@@ -632,24 +699,85 @@ document.addEventListener('DOMContentLoaded', () => {
   // Year (supports multiple)
   document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());
 
-  // Build TOC from headings inside #main
+   // Build TOC (collapsible) from headings inside #main
   const main = document.getElementById('main');
-  const toc = document.getElementById('toc-items');
+  const tocGroups = document.getElementById('toc-groups');
 
-  if(main && toc){
-    const headings = main.querySelectorAll('h2, h3');
+  if(main && tocGroups){
+
+    const makeId = (txt) => (txt || "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g,'-')
+      .replace(/(^-|-$)/g,'');
+
+    // Get headings in order, but ignore anything inside the TOC itself
+    const headings = Array.from(main.querySelectorAll('h2, h3'))
+      .filter(h => !h.closest('#toc'));
+
+    // Group by H2, with H3 as children until next H2
+    const groups = [];
+    let current = null;
+
     headings.forEach(h => {
-      // Skip the TOC itself to avoid a self-link
-      if(h.closest('#toc')) return;
+      const text = (h.textContent || "").trim();
+      if(!text) return;
 
-      const id = h.id || h.textContent.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
-      h.id = id;
+      if(!h.id) h.id = makeId(text);
+
+      if(h.tagName === 'H2'){
+        current = { h2: h, subs: [] };
+        groups.push(current);
+      } else if(h.tagName === 'H3' && current){
+        current.subs.push(h);
+      }
+    });
+
+    // Render TOC groups
+    groups.forEach((g, idx) => {
+      const d = document.createElement('details');
+      d.className = 'toc-group';
+      d.open = (idx === 0); // open first group by default
+
+      const s = document.createElement('summary');
+
+      const left = document.createElement('div');
+      left.style.display = 'flex';
+      left.style.alignItems = 'center';
+      left.style.gap = '10px';
 
       const a = document.createElement('a');
-      a.href = '#' + id;
-      a.textContent = h.textContent;
+      a.href = '#' + g.h2.id;
+      a.textContent = g.h2.textContent;
+      a.style.fontWeight = '800';
+      a.style.color = '#e7f6ff';
+      a.style.textDecoration = 'none';
 
-      toc.appendChild(a);
+      // Prevent clicking the link from toggling the details
+      a.addEventListener('click', (ev) => ev.stopPropagation());
+
+      left.appendChild(a);
+
+      const tw = document.createElement('span');
+      tw.className = 'tw';
+      tw.textContent = '▶';
+
+      s.appendChild(left);
+      s.appendChild(tw);
+
+      const links = document.createElement('div');
+      links.className = 'toc-links';
+
+      g.subs.forEach(h3 => {
+        const sub = document.createElement('a');
+        sub.href = '#' + h3.id;
+        sub.textContent = h3.textContent;
+        sub.className = 'sub';
+        links.appendChild(sub);
+      });
+
+      d.appendChild(s);
+      d.appendChild(links);
+      tocGroups.appendChild(d);
     });
   }
 
