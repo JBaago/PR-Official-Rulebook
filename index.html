@@ -7,6 +7,7 @@
 <meta name="description" content="Progression Riders (PR) Series – Official Rulebook">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
 <style>
   :root{
     --bg:#0b0e12; --panel:#12161c; --ink:#e6ebf2; --muted:#9aa6b2;
@@ -23,6 +24,7 @@
   a{color:var(--brand);text-decoration:none}
   a:hover{text-decoration:underline}
   .wrap{max-width:900px;margin:0 auto;padding:20px}
+
   header.hero{position:relative;border-radius:18px;padding:32px 24px 28px;background:var(--panel);box-shadow:var(--card)}
   .ribbon{position:absolute;top:12px;right:-40px;transform:rotate(30deg);background:#0f2433;color:#cfe9ff;padding:6px 60px;border:1px solid rgba(255,255,255,.08);box-shadow:var(--ring);font-weight:700;letter-spacing:.08em}
   .brandline{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
@@ -33,22 +35,24 @@
   .cta-row{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
   .btn{display:inline-flex;gap:10px;align-items:center;background:#0f2433;border:1px solid rgba(255,255,255,.07);padding:10px 14px;border-radius:12px;color:#e7f6ff;box-shadow:var(--ring);font-weight:600;cursor:pointer}
   .btn.secondary{background:#151922;color:var(--ink)}
-/* Discord CTA */
-.discord-cta { margin-top: 12px; }
-.discord-btn{
-  display:inline-block;
-  background:#5865F2;
-  color:#fff;
-  padding:10px 16px;
-  border-radius:12px;
-  text-decoration:none;
-  font-weight:600;
-  border:1px solid rgba(255,255,255,.07);
-  box-shadow:var(--ring);
-  transition:.2s ease;
-}
-.discord-btn:hover{ background:#4752C4; text-decoration:none; }
-	/* Single-column layout */
+
+  /* Discord CTA */
+  .discord-cta { margin-top: 12px; }
+  .discord-btn{
+    display:inline-block;
+    background:#5865F2;
+    color:#fff;
+    padding:10px 16px;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:600;
+    border:1px solid rgba(255,255,255,.07);
+    box-shadow:var(--ring);
+    transition:.2s ease;
+  }
+  .discord-btn:hover{ background:#4752C4; text-decoration:none; }
+
+  /* Single-column layout */
   main{display:grid;gap:16px;margin-top:20px}
   details.section{background:var(--panel);border:1px solid rgba(255,255,255,.06);border-radius:16px;box-shadow:var(--card);padding:0}
   details.section > summary{list-style:none;cursor:pointer;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;font-weight:600}
@@ -69,9 +73,99 @@
   .imgbox{background:#0f1320;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:10px;overflow:auto}
   .imgbox img{max-width:100%;height:auto;display:block;margin:0 auto}
   footer{color:var(--muted);padding:40px 0;text-align:center}
+
   /* Accessible skip links */
   .skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
   .skip:focus{position:static;width:auto;height:auto;padding:8px 10px;background:#0f2433;border-radius:8px;color:#e7f6ff}
+
+  /* =========================
+     PR “Spice” UI Enhancements
+     ========================= */
+
+  /* Softer typography + paragraph rhythm */
+  .sec-body p{max-width:78ch}
+  .sec-body p + p{margin-top:10px}
+
+  /* Make lists feel less “wall of bullets” */
+  .sec-body ul, .sec-body ol{margin-top:10px}
+  .sec-body li{margin:8px 0}
+  .sec-body ul li::marker{color:rgba(18,163,255,.7)}
+  .sec-body ol li::marker{color:rgba(155,89,182,.85); font-weight:700}
+
+  /* Section “chapter strip” */
+  details.section{
+    position:relative;
+    overflow:hidden;
+  }
+  details.section::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:3px;
+    background:linear-gradient(90deg, rgba(18,163,255,.9), rgba(155,89,182,.75), rgba(46,204,113,.65));
+    opacity:.55;
+  }
+
+  /* More exciting summaries */
+  details.section > summary h2{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+
+  /* Tag / pill chips */
+  .pill-row{display:flex; gap:8px; flex-wrap:wrap; margin:10px 0 4px}
+  .pill{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:6px 10px;
+    border-radius:999px;
+    background:rgba(15,19,32,.85);
+    border:1px solid rgba(255,255,255,.08);
+    color:#e7f6ff;
+    font-weight:600;
+    box-shadow:0 10px 22px rgba(0,0,0,.25);
+  }
+  .pill .k{opacity:.8; font-weight:700}
+  .pill strong{font-weight:800}
+
+  /* Callouts: tip / warning / rule / info */
+  .callout{position:relative}
+  .callout.tip{border-left-color:rgba(46,204,113,.85)}
+  .callout.warn{border-left-color:rgba(231,76,60,.9)}
+  .callout.rule{border-left-color:rgba(241,196,15,.9)}
+  .callout.info{border-left-color:rgba(18,163,255,.9)}
+  .callout .label{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-weight:800;
+    letter-spacing:.02em;
+    margin-bottom:6px;
+    color:#e7f6ff;
+  }
+
+  /* TOC link styling */
+  #toc-items a{
+    display:inline-block;
+    padding:7px 10px;
+    border-radius:999px;
+    background:rgba(15,19,32,.85);
+    border:1px solid rgba(255,255,255,.08);
+    margin:6px 6px 0 0;
+    text-decoration:none;
+    color:#e7f6ff;
+    font-weight:600;
+  }
+  #toc-items a:hover{
+    background:rgba(18,163,255,.15);
+    border-color:rgba(18,163,255,.35);
+    text-decoration:none;
+  }
+
+  /* Small “glow” on key headers */
+  .sec-body h3{
+    text-shadow:0 2px 16px rgba(18,163,255,.14);
+  }
 </style>
 </head>
 
@@ -87,7 +181,7 @@
 
         <div class="title">
           <h1>Progression Riders (PR) Series – Official Rulebook</h1>
-          <div class="subtitle">Created by Jacob Baagø • Version 2.1</div>
+          <div class="subtitle">Created by Jacob Baagø • Version 2.2</div>
 
           <div class="discord-cta">
             <a class="discord-btn" href="https://discord.gg/kdmDERpcnw" target="_blank" rel="noopener">
@@ -98,7 +192,7 @@
       </div>
 
       <div class="cta-row">
-        <button class="btn" onclick="window.print()" title="Print or Save as PDF">
+        <button class="btn" onclick="window.print()" title="Print or Save as PDF" type="button">
           <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M6 9V3h12v6h1a3 3 0 0 1 3 3v5h-4v4H6v-4H2v-5a3 3 0 0 1 3-3h1zm2-4v4h8V5H8zm8 12H8v4h8v-4zM6 13a1 1 0 1 0 0 2h1v-2H6z"/>
           </svg>
@@ -109,22 +203,45 @@
 
     <main id="main">
 
-   <details class="section" open>
-        <summary><h2>Latest Changes</h2><span class="twist">▶</span></summary>
+      <!-- ================= -->
+      <!-- TABLE OF CONTENTS -->
+      <!-- ================= -->
+      <details class="section" id="toc" open>
+        <summary><h2>📌 Table of Contents</h2><span class="twist">▶</span></summary>
+        <div class="sec-body">
+          <div class="cta-row" style="margin-top:0">
+            <button class="btn secondary" id="expand-all" type="button" title="Expand all sections">➕ Expand all</button>
+            <button class="btn secondary" id="collapse-all" type="button" title="Collapse all sections">➖ Collapse all</button>
+          </div>
+
+          <div class="callout info" style="margin-top:12px">
+            <div class="label">🧭 Navigation</div>
+            <div id="toc-items"><!-- Auto-generated links appear here --></div>
+          </div>
+
+          <p class="muted" style="margin:10px 0 0">
+            Tip: Click a link to jump directly to a section.
+          </p>
+        </div>
+      </details>
+
+      <details class="section" open>
+        <summary><h2>🆕 Latest Changes</h2><span class="twist">▶</span></summary>
         <div class="sec-body">
           <details open>
             <summary><strong>Version 2.2 – 27 Feb 2026</strong></summary>
             <ul>
               <li><strong>PR Development D Group added</strong></li>
+              <li>Rulebook layout refreshed for easier reading (TOC + visual improvements).</li>
             </ul>
           </details>
 
-			<details>
+          <details>
             <summary><strong>Version 2.1 – 18 Feb 2026</strong></summary>
             <ul>
               <li><strong>Tiebreaker refinement</strong>: clarified and expanded season jersey hierarchy.
-              Green and Red Jerseys now break ties by Yellow Jersey totals first;
-              Yellow Jersey breaks ties by combined (Red + Green), then Green, then Red.</li>
+                Green and Red Jerseys now break ties by Yellow Jersey totals first;
+                Yellow Jersey breaks ties by combined (Red + Green), then Green, then Red.</li>
             </ul>
           </details>
 
@@ -153,15 +270,21 @@
         </div>
       </details>
 
-	  <details class="section" id="sec-1" open>
+      <details class="section" id="sec-1" open>
         <summary><h2>1 — Structure &amp; Core Rules</h2><span class="twist">▶</span></summary>
         <div class="sec-body">
           <h3>1.1 Overview</h3>
           <p>The Progression Riders (PR) Series is a multi-stage community race series consisting of 8 stages. Each season rewards tactical riding, teamwork, and consistency across multiple terrain profiles.</p>
 
+          <div class="pill-row">
+            <span class="pill"><span class="k">🎯</span>8 stages</span>
+            <span class="pill"><span class="k">🧠</span>tactics &amp; teamwork</span>
+            <span class="pill"><span class="k">🏁</span>consistency wins</span>
+          </div>
+
           <h3>1.2 Groups</h3>
           <ul>
-			<li><strong>D Group</strong> — expect lead beacon at <strong>2.5 W/kg</strong></li>
+            <li><strong>D Group</strong> — expect lead beacon at <strong>2.5 W/kg</strong></li>
             <li><strong>C Group</strong> — expect lead beacon at <strong>3.2 W/kg</strong></li>
             <li><strong>B Group</strong> — expect lead beacon at <strong>4.0 W/kg</strong></li>
             <li>The early phase includes the <strong>Chase Pot</strong> — a dynamic inter-group bonus (see Section 2).</li>
@@ -172,7 +295,7 @@
             <li>Progression Riders uses points multipliers to balance mixed-ability riders in C and B Group.</li>
             <li>Multipliers are based on your Zwift Racing Score (ZRS), rider category and the group you choose.</li>
             <li><strong>Points are always earned on the road first, then adjusted afterward.</strong></li>
-						<li>A mid level rider in the natural group results in a multiplier close to 1.0×.</li>
+            <li>A mid level rider in the natural group results in a multiplier close to 1.0×.</li>
             <li>Strong categroy B riders racing in C Group typically score ~0.6–0.8× points.</li>
             <li>Category A riders in B Group typically score ~0.7–0.8× points.</li>
             <li>Riders stepping up a group typically receive a small boost (~1.05–1.10×).</li>
@@ -196,7 +319,9 @@
             <div class="jersey"><span class="dot green"></span> <strong>Green</strong> — Flat / Sprint segments</div>
             <div class="jersey"><span class="dot yellow"></span> <strong>Yellow</strong> — Finish lines, longer climbs &amp; rouleur segments</div>
           </div>
-          <div class="callout">
+
+          <div class="callout info">
+            <div class="label">📣 How points are awarded</div>
             The method of point allocation (<strong>FTS</strong> or <strong>FAL</strong>) is defined per segment in the Stage Brief and announced on the ride (see Section 3). A combined leaderboard merges B and C Group results for each jersey classification.
           </div>
 
@@ -209,11 +334,15 @@
           </ul>
 
           <h3>1.6 Zero-Point Stage Rule (ZPS) — Mandatory</h3>
+          <div class="callout rule">
+            <div class="label">🟨 ZPS is non-negotiable</div>
+            A ZPS means all earned points are <strong>nullified post ride</strong>.
+          </div>
+
           <ul>
-            <li><strong>A ZPS means all earned points are nullified post ride.</strong></li>
             <li>Each rider must designate <strong>two ZPS</strong> per season.</li>
-						<li><em><strong>Non-attendance</strong></em>: Automatically counts as a ZPS.</li>
-						<li><em><strong>Declared ZPS Participation</strong></em>: Ride as desired but all points are nullified post ride (e.g., steal points from opposition, to support others or form alliances).</li>
+            <li><em><strong>Non-attendance</strong></em>: Automatically counts as a ZPS.</li>
+            <li><em><strong>Declared ZPS Participation</strong></em>: Ride as desired but all points are nullified post ride (e.g., steal points from opposition, to support others or form alliances).</li>
             <li><em><strong>Automatic Zero-Point Stage (ZPS) Clause</strong></em>: If a rider finishes a stage with 0 points across all jersey classifications (Yellow, Red, and Green), that stage will automatically count as one of the rider's designated Zero-Point Stages (ZPS).</li>
             <li><strong>Deadline</strong>: Declare latest within 5 minutes of stage start.</li>
             <li><strong>Irrevocable</strong>: Declarations cannot be revoked.</li>
@@ -227,13 +356,18 @@
       </details>
 
       <!-- ===================================== -->
-      <!-- PR DEVELOPMENT (DEV-D / D GROUP) START -->
+      <!-- 1.8 — PR DEVELOPMENT (DEV-D / D GROUP) -->
       <!-- ===================================== -->
       <details class="section" id="sec-devd" open>
-        <summary><h2>PR Development (Dev-D / D Group)</h2><span class="twist">▶</span></summary>
+        <summary><h2>1.8 — PR Development (Dev-D / D Group)</h2><span class="twist">▶</span></summary>
         <div class="sec-body">
 
-          <h3>🚀 PR Development Team (Dev-D)</h3>
+          <div class="pill-row">
+            <span class="pill"><span class="k">🚀</span>Academy pathway</span>
+            <span class="pill"><span class="k">🟨</span><strong>Yellow-only</strong> scoring</span>
+            <span class="pill"><span class="k">🔵</span>Prestige mark</span>
+            <span class="pill"><span class="k">🌟</span>NEO bonus next season</span>
+          </div>
 
           <h3>🎯 Purpose</h3>
           <p>
@@ -250,7 +384,8 @@
           </ul>
 
           <h3>☕ Coffee Break use (only for D group)</h3>
-          <div class="callout">
+          <div class="callout warn">
+            <div class="label">⚠️ Coffee Break rule</div>
             Allowed with prior notice to Beacon and <strong>NOT</strong> during contested segments.<br>
             Otherwise respective points for the stage are voided.
           </div>
@@ -289,22 +424,20 @@
           </ul>
 
           <h3>💡 Key idea</h3>
-          <div class="callout">
+          <div class="callout tip">
+            <div class="label">💡 The path</div>
             <strong>Development → opportunity → proof → progression.</strong>
           </div>
 
         </div>
       </details>
-      <!-- =================================== -->
-      <!-- PR DEVELOPMENT (DEV-D / D GROUP) END -->
-      <!-- =================================== -->
 
       <details class="section" id="sec-2">
         <summary><h2>2 — Groups &amp; the Chase Pot</h2><span class="twist">▶</span></summary>
         <div class="sec-body">
           <h3>2.1 Group Start Order</h3>
           <ul>
-			<li>D Group starts <strong>5 minutes ahead of C Group</strong>.</li>
+            <li>D Group starts <strong>5 minutes ahead of C Group</strong>.</li>
             <li>C Group starts <strong>2 minutes ahead of B Group</strong>.</li>
             <li>B Group starts <strong>2 minutes behind</strong> and begins with a chase of C Group.</li>
             <li>Each group has its own Yellow Beacon responsible for pacing and coordination.</li>
@@ -317,59 +450,46 @@
             <li><strong>Break-even time for the multiplier is: B Group 17min. C Group 19min.</strong></li>
             <li><strong>C Group goal</strong>: cooperate to hold off the catch as long as possible, to maximise own multiplier and diminish B’s multiplier.</li>
             <li><strong>B Group goal</strong>: cooperate to catch efficiently and maximize the multiplier to their favor.</li>
-            <li><strong>SEGMENTS CAN BE CONTESTED IN BOTH C AND B GROUP DURING THE CHASE IS IF SO ADVISED IN STAGE BRIEF OR BY BEACONS.</strong>.</li>
+            <li><strong>SEGMENTS CAN BE CONTESTED IN BOTH C AND B GROUP DURING THE CHASE IS IF SO ADVISED IN STAGE BRIEF OR BY BEACONS.</strong></li>
           </ul>
 
           <h3>2.3 Stage Bonus Pot Value &amp; Decay</h3>
           <ul>
-            	<li><strong>Initial Pot</strong> is stage dependent:</li>
-            	<li><strong>Sprinteur</strong> stage: 🟩+🟩 = 13,2 pts / rider scoring green points.</li>
-            	<li><strong>Puncheur</strong> stage: 🟩&amp;🟥 = 6,6 pts respectively / rider scoring green and/or red points.</li>
-            	<li><strong>Grimpeur</strong> stage: 🟥+🟥 = 13,2 pts / rider scoring red points.</li>
-            	<li><strong>Rouleur</strong> stage: 🟨 = / rider according to the Rouleur Stage Table below.</li>
+            <li><strong>Initial Pot</strong> is stage dependent:</li>
+            <li><strong>Sprinteur</strong> stage: 🟩+🟩 = 13,2 pts / rider scoring green points.</li>
+            <li><strong>Puncheur</strong> stage: 🟩&amp;🟥 = 6,6 pts respectively / rider scoring green and/or red points.</li>
+            <li><strong>Grimpeur</strong> stage: 🟥+🟥 = 13,2 pts / rider scoring red points.</li>
+            <li><strong>Rouleur</strong> stage: 🟨 = / rider according to the Rouleur Stage Table below.</li>
 
-            <li>Riders points are multiplied according the table and graph shown below (There exists at specific table for Rouleur Stages).</li>
+            <li>Riders points are multiplied according the table and graph shown below (There exists a specific table for Rouleur Stages).</li>
 
             <br><br>
 
-  					<div style="display: flex; gap: 10px; justify-content: center; align-items: flex-start;">
+            <div style="display: flex; gap: 10px; justify-content: center; align-items: flex-start; flex-wrap:wrap;">
+              <a href="PR_Chase_Pot_Graph.jpg" target="_blank" style="flex: 1; min-width:260px;">
+                <img src="PR_Chase_Pot_Graph.jpg" alt="PR Chase Pot Graph" style="width: 100%; height: auto; border: 1px solid #ccc;">
+              </a>
 
-  					<a href="PR_Chase_Pot_Graph.jpg" target="_blank" style="flex: 1;">
-   					 <img src="PR_Chase_Pot_Graph.jpg"
-       		  			alt="PR Chase Pot Graph"
-         					style="width: 100%; height: auto; border: 1px solid #ccc;">
- 						 </a>
+              <a href="PR_Chase_Pot_Table.jpg" target="_blank" style="flex: 1; min-width:260px;">
+                <img src="PR_Chase_Pot_Table.jpg" alt="PR Chase Pot Table" style="width: 100%; height: auto; border: 1px solid #ccc;">
+              </a>
+            </div>
 
- 						 <a href="PR_Chase_Pot_Table.jpg" target="_blank" style="flex: 1;">
-   						 <img src="PR_Chase_Pot_Table.jpg"
-         						alt="PR Chase Pot Table"
-         						style="width: 50%; height: auto; border: 1px solid #ccc;">
-  					</a>
+            <li><strong>Rouleur Stage SPECIFIC Chase Pot:</strong></li>
+            <li>Rouleur stages primarily contribute to yellow points. The Rouleur Stage Bonus Pot is not tied to any specific segment; instead, it awards yellow points based on the distribution shown in the table and graph below. The Rouleur Stage Pot points are distributed directly to riders scoring points in subsequent <strong>YELLOW</strong> segments:</li>
 
-					</div>
-						</li>
+            <br><br>
 
-            <li><strong>Rouleur Stage SPECIFIC Chase Pot:</strong>
-              <li>Rouleur stages primarily contribute to yellow points. The Rouleur Stage Bonus Pot is not tied to any specific segment; instead, it awards yellow points based on the distribution shown in the table and graph below. The Rouleur Stage Pot points are distributed directly to riders scoring points in subsequent <strong>YELLOW</strong> segments:</li>
+            <div style="display: flex; gap: 10px; justify-content: center; align-items: flex-start; flex-wrap:wrap;">
+              <a href="RS_Chase_Pot_Graph.jpg" target="_blank" style="flex: 1; min-width:260px;">
+                <img src="RS_Chase_Pot_Graph.jpg" alt="RS Chase Pot Graph" style="width: 100%; height: auto; border: 1px solid #ccc;">
+              </a>
 
-  					<br><br>
-
-  					<div style="display: flex; gap: 10px; justify-content: center; align-items: flex-start;">
-
-  					<a href="RS_Chase_Pot_Graph.jpg" target="_blank" style="flex: 1;">
-   					 <img src="RS_Chase_Pot_Graph.jpg"
-       		  			alt="RS Chase Pot Graph"
-         					style="width: 100%; height: auto; border: 1px solid #ccc;">
- 						 </a>
-
- 						 <a href="RS_Chase_Pot_Table.jpg" target="_blank" style="flex: 1;">
-   						 <img src="RS_Chase_Pot_Table.jpg"
-         						alt="RS Chase Pot Table"
-         						style="width: 50%; height: auto; border: 1px solid #ccc;">
-  					</a>
-
-					</div>
-						</li>
+              <a href="RS_Chase_Pot_Table.jpg" target="_blank" style="flex: 1; min-width:260px;">
+                <img src="RS_Chase_Pot_Table.jpg" alt="RS Chase Pot Table" style="width: 100%; height: auto; border: 1px solid #ccc;">
+              </a>
+            </div>
+          </ul>
 
           <h3>2.4 Catch Definition &amp; Beacon Rules</h3>
           <ul>
@@ -427,9 +547,9 @@
           </ol>
           <p><strong>Season tiebreakers</strong>:</p>
           <ul>
-            <li><strong>Yellow Jersey</strong>: Highest <em>(Red + Green)</em> points &rarr; then highest <em>Green</em> &rarr; then highest <em>Red</em>.</li>
-            <li><strong>Green Jersey</strong>: Highest <em>Yellow</em> points &rarr; then highest <em>Red</em> points.</li>
-            <li><strong>Red Jersey</strong>: Highest <em>Yellow</em> points &rarr; then highest <em>Green</em> points.</li>
+            <li><strong>Yellow Jersey</strong>: Highest <em>(Red + Green)</em> points → then highest <em>Green</em> → then highest <em>Red</em>.</li>
+            <li><strong>Green Jersey</strong>: Highest <em>Yellow</em> → then highest <em>Red</em>.</li>
+            <li><strong>Red Jersey</strong>: Highest <em>Yellow</em> → then highest <em>Green</em>.</li>
             <li>If still tied after all criteria: alphabetical by rider name.</li>
           </ul>
 
@@ -438,7 +558,7 @@
             <li>Riders kicked by fence → no segment points awarded post separation from beacon group (even if FAL was passed prior).</li>
             <li>Late joins (after segment start line) → eligible for <strong>FTS only</strong>, no FAL.</li>
             <li><strong>Coffee Break usage</strong>: voids all earned points for the ride but does <strong>not</strong> qualify as a Zero-Point Stage (ZPS).</li>
-            <li>Equipment restrictions → To be eligable for scoring points, <strong>heart rate</strong> recording is mandatory and <strong>ZPower is not</strong> accepted as valid power source .</li>
+            <li>Equipment restrictions → To be eligable for scoring points, <strong>heart rate</strong> recording is mandatory and <strong>ZPower is not</strong> accepted as valid power source.</li>
           </ul>
 
           <h3>3.6 Season Standings</h3>
@@ -471,61 +591,65 @@
         </div>
       </details>
 
- <details class="section" id="sec-5">
-  		<summary><h2 id="season-calendar">5 — Season Calendar &amp; Stage Brief</h2><span class="twist">▶</span></summary>
-  		<div class="sec-body">
-  		  <p>The current PR Season Calendar and Stage Brief are shown below. Both will always reflect the latest published versions.</p>
-  		  <div class="imgbox">
-    		  <img src="PR-Season-Calendar.jpg" alt="PR Season Calendar">
-    		</div>
+      <details class="section" id="sec-5">
+        <summary><h2 id="season-calendar">5 — Season Calendar &amp; Stage Brief</h2><span class="twist">▶</span></summary>
+        <div class="sec-body">
+          <p>The current PR Season Calendar and Stage Brief are shown below. Both will always reflect the latest published versions.</p>
+          <div class="imgbox">
+            <img src="PR-Season-Calendar.jpg" alt="PR Season Calendar">
+          </div>
 
-    		<p>
-     		 <a href="PR-Stage-Brief.pdf" target="_blank" rel="noopener">
-       		 Open PR Stage Brief (PDF)
-      	</a>
-     		&nbsp;•&nbsp;
-      	<a href="PR-Stage-Brief.pdf" download>
-        	Download PDF
-      	</a>
-    	</p>
-  	</div>
-	</details>
+          <p>
+            <a href="PR-Stage-Brief.pdf" target="_blank" rel="noopener">
+              Open PR Stage Brief (PDF)
+            </a>
+            &nbsp;•&nbsp;
+            <a href="PR-Stage-Brief.pdf" download>
+              Download PDF
+            </a>
+          </p>
+        </div>
+      </details>
 
-          <details class="section" open>
-            <summary><strong>Definitions: FAL, FTS, FIN</strong></summary>
-            <div class="sec-body">
-              <p><strong>FAL</strong> – First Across the Line (order of crossing).<br>
-              <strong>FTS</strong> – Fastest Through Segment (time based).<br>
-              <strong>FIN</strong> – Finishing banner; scored as FAL.</p>
-            </div>
-          </details>
+      <details class="section" open>
+        <summary><h2>Definitions: FAL, FTS, FIN</h2><span class="twist">▶</span></summary>
+        <div class="sec-body">
+          <p><strong>FAL</strong> – First Across the Line (order of crossing).<br>
+          <strong>FTS</strong> – Fastest Through Segment (time based).<br>
+          <strong>FIN</strong> – Finishing banner; scored as FAL.</p>
+        </div>
+      </details>
 
       <footer>
-        © <span id="year"></span> Jacob Baagø • PR Series – Official Rulebook • All rights reserved
+        © <span class="year"></span> Jacob Baagø • PR Series – Official Rulebook • All rights reserved
       </footer>
+
     </main>
   </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  // Year
-  const y = document.getElementById('year'); if(y) y.textContent = new Date().getFullYear();
+  // Year (supports multiple)
+  document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());
 
   // Build TOC from headings inside #main
   const main = document.getElementById('main');
-  const headings = main.querySelectorAll('h2, h3');
   const toc = document.getElementById('toc-items');
-  if(toc){
+
+  if(main && toc){
+    const headings = main.querySelectorAll('h2, h3');
     headings.forEach(h => {
+      // Skip the TOC itself to avoid a self-link
+      if(h.closest('#toc')) return;
+
       const id = h.id || h.textContent.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
       h.id = id;
+
       const a = document.createElement('a');
       a.href = '#' + id;
       a.textContent = h.textContent;
-      const wrap = document.createElement('div');
-      if(h.tagName==='H3'){ wrap.style.marginLeft = '12px'; }
-      wrap.appendChild(a);
-      toc.appendChild(wrap);
+
+      toc.appendChild(a);
     });
   }
 
@@ -537,25 +661,27 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
-<section class="ownership-tile">
-  <details>
-    <summary>Ownership &amp; Format Rights</summary>
-    <p>© <span id="year"></span> Jacob Baagø. All rights reserved.</p>
-    <p>
-      The <strong>“Progression Riders”</strong> event concept — also known as the <strong>“PR Ride”</strong> — including its name, underlying ride structure, scoring system, jersey classifications, points allocation, Chase Multiplier and Points Pot system, and the <strong>“Zero-Point Stage”</strong> mechanism, are original creations and intellectual property of <strong>Jacob Baagø</strong>.
-    </p>
-    <p>
-      These elements collectively constitute a proprietary event format and may not be copied, replicated, hosted, or adapted in whole or in part without the explicit written consent of the author.
-    </p>
-    <p>
-      This ownership extends to the event design, rule framework, and overall competitive structure, regardless of platform, community, or affiliation. Participation in or administration of events under the <strong>Progression Riders / PR Ride</strong> format does not grant any ownership, license, or continuation rights.
-    </p>
-    <p>
-      <strong>“Progression Riders”</strong>, <strong>“PR Ride”</strong>, and all associated systems and terms are proprietary to <strong>Jacob Baagø</strong> and may be transferred or withdrawn solely at his discretion.
-    </p>
-    <p>
-      Unauthorized use may result in formal takedown requests, public clarification of ownership, and further legal or platform-level remedies where applicable.
-    </p>
+<section class="ownership-tile" style="max-width:900px;margin:0 auto 40px; padding:0 20px;">
+  <details class="section">
+    <summary><h2>Ownership &amp; Format Rights</h2><span class="twist">▶</span></summary>
+    <div class="sec-body">
+      <p>© <span class="year"></span> Jacob Baagø. All rights reserved.</p>
+      <p>
+        The <strong>“Progression Riders”</strong> event concept — also known as the <strong>“PR Ride”</strong> — including its name, underlying ride structure, scoring system, jersey classifications, points allocation, Chase Multiplier and Points Pot system, and the <strong>“Zero-Point Stage”</strong> mechanism, are original creations and intellectual property of <strong>Jacob Baagø</strong>.
+      </p>
+      <p>
+        These elements collectively constitute a proprietary event format and may not be copied, replicated, hosted, or adapted in whole or in part without the explicit written consent of the author.
+      </p>
+      <p>
+        This ownership extends to the event design, rule framework, and overall competitive structure, regardless of platform, community, or affiliation. Participation in or administration of events under the <strong>Progression Riders / PR Ride</strong> format does not grant any ownership, license, or continuation rights.
+      </p>
+      <p>
+        <strong>“Progression Riders”</strong>, <strong>“PR Ride”</strong>, and all associated systems and terms are proprietary to <strong>Jacob Baagø</strong> and may be transferred or withdrawn solely at his discretion.
+      </p>
+      <p>
+        Unauthorized use may result in formal takedown requests, public clarification of ownership, and further legal or platform-level remedies where applicable.
+      </p>
+    </div>
   </details>
 </section>
 
